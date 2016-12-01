@@ -1,26 +1,13 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import _ from 'lodash';
-import R from 'ramda';
+import { renderStringorArrayOfStrings } from '../../utils/renderStringorArrayOfStrings';
 
 export class Header extends React.Component {
   constructor (props) {
     super(props);
     this.renderSecond = this.renderSecond.bind(this);
     this.renderElement = this.renderElement.bind(this);
-  }
-
-  renderSecond () {
-    if (_.isNil(this.props.second)) { return; }
-
-    if (_.isArray(this.props.second)) {
-      const mapIndexed = R.addIndex(R.map);
-      return mapIndexed((content, i) => {
-        return (<p key={i}>{content}</p>);
-      }, this.props.second);
-    }
-
-    return (<p key={i}>{this.props.second}</p>);
   }
 
   renderElement (propName) {
@@ -37,7 +24,7 @@ export class Header extends React.Component {
       <div className={boxClasses}>
         <div className={firstClasses}>{this.props.first}/></div>
         <div className={secondClasses}>
-          {this.renderSecond()}
+          {renderStringorArrayOfStrings(this.props.second)}
         </div>
         {this.renderElement('afterSecond')}
       </div>
