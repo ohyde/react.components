@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 import _ from 'lodash';
 import R from 'ramda';
 
@@ -28,10 +29,14 @@ export class Header extends React.Component {
   }
 
   render () {
+    const boxClasses = classnames(this.props.boxClasses);
+    const firstClasses = classnames(this.props.firstClasses);
+    const secondClasses = classnames(this.props.secondClasses);
+
     return (
-      <div className="header">
-        <div className="first">{this.props.first}/></div>
-        <div className="second">
+      <div className={boxClasses}>
+        <div className={firstClasses}>{this.props.first}/></div>
+        <div className={secondClasses}>
           {this.renderSecond()}
         </div>
         {this.renderElement('afterSecond')}
@@ -41,6 +46,9 @@ export class Header extends React.Component {
 }
 
 Header.propTypes = {
+  boxClasses: React.PropTypes.array,
+  firstClasses: React.PropTypes.array,
+  secondClasses: React.PropTypes.array,
   first: PropTypes.string.isRequired,
   second: React.PropTypes.oneOfType(
     [
