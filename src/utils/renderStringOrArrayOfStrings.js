@@ -7,11 +7,17 @@ export const renderStringOrArrayOfStrings = (toRender) => {
 
   if (_.isArray(toRender)) {
     return mapIndexed((item, i) => {
-      return (<div key={i}>{item.content}</div>);
+    	return renderStringOrArrayOfStrings(item);
     }, toRender);
   }
 
-  if (_.isObject(toRender)) { return (<div>{toRender.content}</div>); }
+  if (_.isObject(toRender)) { return renderObject(toRender); }
 
   return (<div>{toRender}</div>);
+}
+
+const renderObject = (toRender) => {
+	if(!_.has(toRender, 'content')) { return; }
+
+	return (<div>{toRender.content}</div>);
 }
