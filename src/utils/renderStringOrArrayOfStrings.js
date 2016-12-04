@@ -1,23 +1,25 @@
 import React from 'react';
-import _ from 'lodash';
-import { mapIndexed } from './ramdaUtils';
+import R from 'ramda';
+import { mapIndexed, isObject } from './ramdaUtils';
+
 
 export const renderStringOrArrayOfStrings = (toRender) => {
-  if (_.isNil(toRender)) { return; }
 
-  if (_.isArray(toRender)) {
+  if (R.isNil(toRender)) { return; }
+
+  if (R.isArrayLike(toRender)) {
     return mapIndexed((item, i) => {
     	return renderStringOrArrayOfStrings(item);
     }, toRender);
   }
 
-  if (_.isObject(toRender)) { return renderObject(toRender); }
+  if (isObject(typeof toRender)) { return renderObject(toRender); }
 
   return (<div>{toRender}</div>);
 }
 
 const renderObject = (toRender) => {
-	if(!_.has(toRender, 'content')) { return; }
+	if(!R.has('content', toRender)) { return; }
 
 	return (<div>{toRender.content}</div>);
 }
