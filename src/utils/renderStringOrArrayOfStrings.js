@@ -5,22 +5,22 @@ import { mapIndexed, isObject } from './ramdaUtils';
 
 export const renderStringOrArrayOfStrings = (toRender) => {
 
-	// const actionToTake = R.cond([
-	// 	[R.isNil(), toRender => undefined ],
-	// 	[R.isArrayLike(), mapRender],
-	// 	[typeOfIsObject(), renderObject],
-	// 	[R.T, (toRender) => { return stringRender(toRender) }]
-	// ]);
+	const actionToTake = R.cond([
+		[R.isNil, toRender => undefined ],
+		[R.isArrayLike, mapRender],
+		[typeOfIsObject, renderObject],
+		[R.T, (toRender) => { return stringRender(toRender) }]
+	]);
 
-	// console.log(actionToTake(toRender));
+	console.log(actionToTake(toRender));
 
-  if (R.isNil(toRender)) { return; }
+  // if (R.isNil(toRender)) { return; }
 
-  if (R.isArrayLike(toRender)) { return mapRender(toRender); }
+  // if (R.isArrayLike(toRender)) { return mapRender(toRender); }
 
-  if (isObject(toRender)) { return renderObject(toRender); }
+  // if (isObject(toRender)) { return renderObject(toRender); }
 
-  return stringRender(toRender);
+  // return stringRender(toRender);
 }
 
 const typeOfIsObject = (toRender) => { return isObject(typeof toRender) }
