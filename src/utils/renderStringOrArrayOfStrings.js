@@ -12,6 +12,9 @@ export const renderStringOrArrayOfStrings = (toRender) => {
   //   [R.T, (toRender) => { return stringRender(toRender) }]
   // ]);
 
+  // return actionToTake(toRender);
+
+
   if (R.isNil(toRender)) { return; }
 
   if (R.isArrayLike(toRender)) { return mapRender(toRender); }
