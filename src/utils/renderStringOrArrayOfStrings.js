@@ -1,9 +1,11 @@
+/* @flow */
+
 import React from 'react';
 import R from 'ramda';
 import { mapIndexed, isObject } from './ramdaUtils';
 
 
-export const renderStringOrArrayOfStrings = (toRender) => {
+export const renderStringOrArrayOfStrings = (toRender: object) => {
 
   // const actionToTake = R.cond([
   //   [R.isNil, toRender => undefined ],
@@ -23,6 +25,8 @@ export const renderStringOrArrayOfStrings = (toRender) => {
 
   return stringRender(toRender);
 }
+
+const thingWithAString = (theString: string) => theString.length
 
 const typeOfIsObject = (toRender) => { return isObject(typeof toRender) }
 
