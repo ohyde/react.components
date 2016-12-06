@@ -3,4 +3,4 @@ language: node_js
 node_js:
   - "5"
 
-script: cd $PROJECT_DIR && npm install && npm run test
+script:  npm install && npm run test
