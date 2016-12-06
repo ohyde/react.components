@@ -4,7 +4,8 @@
   "description": "Reusable React Components",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/.setup.js tests/**/*.test.js"
+    "test": "mocha tests/.setup.js tests/**/*.test.js",
+    "cover": "node_modules/.bin/nyc --reporter=text-lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "enzyme": "^2.6.0",
     "jsdom": "^9.8.3",
     "mocha": "^3.2.0",
+    "nyc": "^10.0.0",
     "ramda": "^0.22.1",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1"
