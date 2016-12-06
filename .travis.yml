@@ -3,4 +3,4 @@ language: node_js
 node_js:
   - "5"
 
-script:  npm install && npm run cover
+script:  npm install && npm run test && npm run cover
