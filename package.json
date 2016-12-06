@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=text --cache mocha tests/.setup.js tests/**/*.test.js",
-    "cover": "node_modules/.bin/nyc report --reporter=text-lcov | coveralls"
+    "cover": "node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
+    "flow": "node_modules/.bin/flow"
   },
   "repository": {
     "type": "git",

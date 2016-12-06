@@ -5,7 +5,7 @@ import R from 'ramda';
 import { mapIndexed, isObject } from './ramdaUtils';
 
 
-export const renderStringOrArrayOfStrings = (toRender: object) => {
+export const renderStringOrArrayOfStrings = (toRender: any) => {
 
   // const actionToTake = R.cond([
   //   [R.isNil, toRender => undefined ],
