@@ -8,10 +8,10 @@ const isObjectWithContent = R.allPass([R.is(Object), R.has('content')]);
 
 export const renderStringOrArrayOfStrings = (toRender: any) => {
   return R.cond([
-    [R.isNil, R.always(undefined) ],
+    [R.is(String), stringRender],
     [R.isArrayLike, arrayRender],
     [isObjectWithContent, objectRender],
-    [R.T, stringRender]
+    [R.T, R.always(undefined)]
   ])(toRender);
 };
 
