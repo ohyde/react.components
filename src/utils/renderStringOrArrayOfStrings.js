@@ -4,13 +4,11 @@ import React from 'react';
 import R from 'ramda';
 import { mapIndexed } from './ramdaUtils';
 
-const isObjectWithContent = R.allPass([R.is(Object), R.has('content')]);
-
 export const renderStringOrArrayOfStrings = (toRender: any) => {
   return R.cond([
     [R.is(String), stringRender],
     [R.isArrayLike, arrayRender],
-    [isObjectWithContent, objectRender],
+    [R.allPass([R.is(Object), R.has('content')]), objectRender],
     [R.T, R.always(undefined)]
   ])(toRender);
 };
