@@ -2,41 +2,25 @@
 
 import React from 'react';
 import R from 'ramda';
-import { mapIndexed, isObject } from './ramdaUtils';
+import { mapIndexed } from './ramdaUtils';
 
 
 export const renderStringOrArrayOfStrings = (toRender: any) => {
-
-  // const actionToTake = R.cond([
-  //   [R.isNil, toRender => undefined ],
-  //   [R.isArrayLike, mapRender],
-  //   [typeOfIsObject, renderObject],
-  //   [R.T, (toRender) => { return stringRender(toRender) }]
-  // ]);
-
-  // return actionToTake(toRender);
-
-
-  if (R.isNil(toRender)) { return; }
-
-  if (R.isArrayLike(toRender)) { return mapRender(toRender); }
-
-  if (isObject(toRender)) { return renderObject(toRender); }
-
-  return stringRender(toRender);
+  return R.cond([
+    [R.isNil, R.always(undefined) ],
+    [R.isArrayLike, mapRender],
+    [R.is(Object), renderObject],
+    [R.T, stringRender]
+  ])(toRender);
 }
 
-const thingWithAString = (theString: string) => theString.length
+const stringRender = (toRender: any) => { return (<div>{toRender}</div>) }
 
-const typeOfIsObject = (toRender) => { return isObject(typeof toRender) }
-
-const stringRender = (toRender) => { return (<div>{toRender}</div>) }
-
-const mapRender = (toRender) => {
+const mapRender = (toRender: any) => {
   return mapIndexed(renderStringOrArrayOfStrings, toRender);
 }
 
-const renderObject = (toRender) => {
+const renderObject = (toRender: any) => {
   if(!R.has('content', toRender)) { return; }
 
   return (<div>{toRender.content}</div>);
