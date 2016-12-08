@@ -2,7 +2,6 @@
 
 import React from 'react';
 import R from 'ramda';
-import { mapIndexed } from './ramdaUtils';
 
 export const renderStringOrArrayOfStrings = (toRender: any) => {
   return R.cond([
@@ -14,5 +13,5 @@ export const renderStringOrArrayOfStrings = (toRender: any) => {
 };
 
 const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
-const arrayRender = (toRender: Array<any>) => { return mapIndexed(renderStringOrArrayOfStrings, toRender); };
+const arrayRender = (toRender: Array<any>) => { return R.map(renderStringOrArrayOfStrings, toRender); };
 const objectRender = (toRender: {content: string}) => { return (<div>{toRender.content}</div>); };
