@@ -2,26 +2,16 @@
 
 import React from 'react';
 import R from 'ramda';
-import { mapIndexed } from './ramdaUtils';
-
 
 export const renderStringOrArrayOfStrings = (toRender: any) => {
   return R.cond([
-    [R.isNil, R.always(undefined) ],
-    [R.isArrayLike, mapRender],
-    [R.is(Object), renderObject],
-    [R.T, stringRender]
+    [R.is(String), stringRender],
+    [R.isArrayLike, arrayRender],
+    [R.allPass([R.is(Object), R.has('content')]), objectRender],
+    [R.T, R.always(undefined)]
   ])(toRender);
-}
+};
 
-const stringRender = (toRender: any) => { return (<div>{toRender}</div>) }
-
-const mapRender = (toRender: any) => {
-  return mapIndexed(renderStringOrArrayOfStrings, toRender);
-}
-
-const renderObject = (toRender: any) => {
-  if(!R.has('content', toRender)) { return; }
-
-  return (<div>{toRender.content}</div>);
-}
+const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
+const objectRender = (toRender: {content: string}) => { return (<div>{toRender.content}</div>); };
+const arrayRender = (toRender: Array<any>) => { return R.map(renderStringOrArrayOfStrings, toRender); };
