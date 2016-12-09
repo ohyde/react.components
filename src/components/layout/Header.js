@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import _ from 'lodash';
-import { renderStringOrArrayOfStrings } from '../../utils/renderStringOrArrayOfStrings';
+import { renderText } from '../../utils/renderText';
 
 export class Header extends React.Component {
   constructor (props) {
@@ -24,7 +24,7 @@ export class Header extends React.Component {
       <div className={boxClasses}>
         <div className={firstClasses}>{this.props.first}/></div>
         <div className={secondClasses}>
-          {renderStringOrArrayOfStrings(this.props.second)}
+          {renderText(this.props.second)}
         </div>
         {this.renderElement('afterSecond')}
       </div>
