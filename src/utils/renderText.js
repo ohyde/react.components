@@ -14,4 +14,4 @@ export const renderText = (toRender: any) => {
 
 const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
 const objectRender = (toRender: {content: string}) => { return (<div>{toRender.content}</div>); };
-const arrayRender = (toRender: Array<any>) => { return R.map(renderStringOrArrayOfStrings, toRender); };
+const arrayRender = (toRender: Array<any>) => { return R.map(renderText, toRender); };
