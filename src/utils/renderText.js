@@ -3,7 +3,7 @@
 import React from 'react';
 import R from 'ramda';
 
-export const renderStringOrArrayOfStrings = (toRender: any) => {
+export const renderText = (toRender: any) => {
   return R.cond([
     [R.is(String), stringRender],
     [R.isArrayLike, arrayRender],
