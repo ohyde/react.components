@@ -2,17 +2,17 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 
-import { renderStringOrArrayOfStrings } from '../../src/utils/renderStringOrArrayOfStrings';
+import { renderText } from '../../src/utils/renderText';
 
-describe("renderStringOrArrayOfStrings", () => {
+describe("renderText", () => {
   it("should return nothing when nothing is passed to it", () => {
-  	const result = renderStringOrArrayOfStrings();
+  	const result = renderText();
     expect(result).to.equal(undefined);
   });
 
   describe('rendering a string', () => {
     it("should return a div with the string when a string is passed to it", () => {
-      const result = renderStringOrArrayOfStrings('render this');
+      const result = renderText('render this');
       expect(shallow(result).contains(<div>render this</div>)).to.equal(true);;
     });
   })
@@ -25,7 +25,7 @@ describe("renderStringOrArrayOfStrings", () => {
         { content: 'render this third' }
       ]
 
-      const result = renderStringOrArrayOfStrings(properties);
+      const result = renderText(properties);
 
       expect(shallow(result[0]).contains(<div>render this first</div>)).to.equal(true);;
       expect(shallow(result[1]).contains(<div>render this second</div>)).to.equal(true);;
@@ -35,12 +35,12 @@ describe("renderStringOrArrayOfStrings", () => {
 
   describe('rendering an object', () => {
     it("should return a div with the content string when an object is passed to it", () => {
-      const result = renderStringOrArrayOfStrings({ content: 'render this' });
+      const result = renderText({ content: 'render this' });
       expect(shallow(result).contains(<div>render this</div>)).to.equal(true);;
     });
 
     it("should return nothing when an object is passed without the content property to it", () => {
-      const result = renderStringOrArrayOfStrings({ wrongKey: 'render this' });
+      const result = renderText({ wrongKey: 'render this' });
       expect(result).to.equal(undefined);
     });
   })
