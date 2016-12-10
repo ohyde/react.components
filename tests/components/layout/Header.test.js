@@ -1,16 +1,24 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
+import R from 'ramda';
 
 import Header from '../../../src/components/layout/Header';
 
+const prepareComponent = (mocks) => {
+  const props = {
+    first: R.propOr('Hello World', 'first', mocks),
+    boxClasses: R.propOr(['topLevelDiv'], 'boxClasses', mocks),
+    second: R.propOr('Goodbye World', 'second', mocks),
+  };
+
+  return props;
+}
+
 describe("Header", () => {
   it("should render", () => {
-    const mountedHeader = shallow(<Header
-      first="Hello World"
-      boxClasses={['topLevelDiv']}
-      second="Goodbye World" />
-    );
+    const props = prepareComponent();
+    const mountedHeader = shallow(<Header {...props} />);
     expect(mountedHeader.html()).to.equal('<div class="topLevelDiv"><div class="">Hello World</div><div class=""><div>Goodbye World</div></div></div>');
   });
 
