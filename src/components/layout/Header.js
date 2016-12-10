@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
+import R from 'ramda';
 import { renderText } from '../../utils/renderText';
 
-export class Header extends React.Component {
+class Header extends React.Component {
   constructor (props) {
     super(props);
-    this.renderSecond = this.renderSecond.bind(this);
+    
     this.renderElement = this.renderElement.bind(this);
   }
 
   renderElement (propName) {
-    if (_.isNil(this.props[propName])) { return; }
+    if (R.isNil(this.props[propName])) { return; }
     return this.props[propName];
   }
 

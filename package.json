@@ -4,7 +4,8 @@
   "description": "Reusable React Components",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text --cache mocha tests/.setup.js tests/**/*.test.js",
+    "test": "nyc --reporter=text --cache mocha --watch tests/.setup.js tests/**/*.test.js",
+    "test-single": "nyc --reporter=text --cache mocha tests/.setup.js tests/**/*.test.js",
     "cover": "node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
     "flow": "node_modules/.bin/flow"
   },
