@@ -18,11 +18,11 @@ describe("renderText", () => {
   })
 
   describe('rendering an array', () => {
-    it("should return three divs with the content strings when an array of objects is passed to it", () => {
+    it("should return three divs with the text strings when an array of objects is passed to it", () => {
       const properties = [
-        { content: 'render this first' },
-        { content: 'render this second' },
-        { content: 'render this third' }
+        { text: 'render this first' },
+        { text: 'render this second' },
+        { text: 'render this third' }
       ]
 
       const result = renderText(properties);
@@ -34,15 +34,15 @@ describe("renderText", () => {
   })
 
   describe('rendering an object', () => {
-    it("should return a div with the content string when an object is passed to it", () => {
-      const result = renderText({ content: 'render this' });
+    it("should return a div with the text string when an object is passed to it", () => {
+      const result = renderText({ text: 'render this' });
       expect(shallow(result).contains(<div>render this</div>)).to.equal(true);;
     });
 
-    it("should return nothing when an object is passed without the content property to it", () => {
+    it("should return nothing when an object is passed without the text property to it", () => {
       const result = renderText({ wrongKey: 'render this' });
       expect(result).to.equal(undefined);
     });
   })
-  
+
 });

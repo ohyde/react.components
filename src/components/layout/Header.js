@@ -22,7 +22,7 @@ class Header extends React.Component {
 
     return (
       <div className={boxClasses}>
-        <div className={firstClasses}>{this.props.first}/></div>
+        <div className={firstClasses}>{this.props.first}</div>
         <div className={secondClasses}>
           {renderText(this.props.second)}
         </div>
