@@ -21,6 +21,4 @@ describe("Header", () => {
     const mountedHeader = shallow(<Header {...props} />);
     expect(mountedHeader.html()).to.equal('<div class="topLevelDiv"><div class="">Hello World</div><div class=""><div>Goodbye World</div></div></div>');
   });
-
-
 });

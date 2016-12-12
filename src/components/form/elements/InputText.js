@@ -5,7 +5,7 @@ class InputText extends React.Component {
 
   constructor(props) {
     super(props);
-    
+
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
   }
@@ -20,13 +20,13 @@ class InputText extends React.Component {
 
   render() {
     const classes = classnames(this.props.classes);
-    
+
     return (
       <input {...this.props}
         type="text"
         className={classes}
         id={this.props.id}
-        value={this.state.value}
+        value={this.props.value}
         placeholder={this.props.placeholder}
         disabled={this.props.disabled}
         onBlur={this.onBlur}
