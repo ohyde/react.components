@@ -6,13 +6,6 @@ import { renderText } from '../../utils/renderText';
 class Header extends React.Component {
   constructor (props) {
     super(props);
-    
-    this.renderElement = this.renderElement.bind(this);
-  }
-
-  renderElement (propName) {
-    if (R.isNil(this.props[propName])) { return; }
-    return this.props[propName];
   }
 
   render () {
@@ -26,7 +19,7 @@ class Header extends React.Component {
         <div className={secondClasses}>
           {renderText(this.props.second)}
         </div>
-        {this.renderElement('afterSecond')}
+        {renderText(this.props.afterSecond)}
       </div>
     );
   }
