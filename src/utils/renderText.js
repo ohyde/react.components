@@ -13,5 +13,11 @@ export const renderText = (toRender: any) => {
 };
 
 export const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
-export const objectRender = (toRender: {text: string}) => { return (<div>{toRender.text}</div>); };
+export const objectRender = (toRender: {text: string}) => {
+  return (
+    <div classNames={toRender.classes}>
+      {toRender.text}
+    </div>
+  );
+};
 export const arrayRender = (toRender: Array<any>) => { return R.map(renderText, toRender); };

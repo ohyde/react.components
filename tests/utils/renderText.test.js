@@ -27,16 +27,16 @@ describe("renderText", () => {
 
       const result = renderText(properties);
 
-      expect(shallow(result[0]).contains(<div>render this first</div>)).to.equal(true);;
-      expect(shallow(result[1]).contains(<div>render this second</div>)).to.equal(true);;
-      expect(shallow(result[2]).contains(<div>render this third</div>)).to.equal(true);;
+      expect(result[0].props.children).to.equal(properties[0].text);
+      expect(result[1].props.children).to.equal(properties[1].text);
+      expect(result[2].props.children).to.equal(properties[2].text);
     });
   })
 
   describe('rendering an object', () => {
     it("should return a div with the text string when an object is passed to it", () => {
       const result = renderText({ text: 'render this' });
-      expect(shallow(result).contains(<div>render this</div>)).to.equal(true);;
+      expect(result.props.children).to.equal('render this');
     });
 
     it("should return nothing when an object is passed without the text property to it", () => {
