@@ -13,7 +13,7 @@ export const renderText = (toRender: any) => {
 };
 
 export const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
-export const objectRender = (toRender: {text: string}) => {
+export const objectRender = (toRender: {text: string, classes: string}) => {
   return (
     <div classNames={toRender.classes}>
       {toRender.text}
