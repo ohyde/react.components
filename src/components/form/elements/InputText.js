@@ -22,7 +22,7 @@ class InputText extends React.Component {
     const classes = classnames(this.props.classes);
 
     return (
-      <input {...this.props}
+      <input
         type="text"
         className={classes}
         id={this.props.id}

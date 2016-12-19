@@ -10,7 +10,7 @@ const prepareComponent = (mocks) => {
     first: R.propOr('Hello World', 'first', mocks),
     boxClasses: R.propOr(['topLevelDiv'], 'boxClasses', mocks),
     second: R.propOr('Goodbye World', 'second', mocks),
-    secondClasses: R.propOr('Goodbye World', 'secondClasses', mocks),
+    secondClasses: R.propOr(['Goodbye World'], 'secondClasses', mocks),
   };
 
   return props;

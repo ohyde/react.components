@@ -21,6 +21,17 @@ export const objectRender = (toRender: {text: string, classes: string}) => {
     [R.T, objectRenderInDiv]
   ])(toRender);
 };
-
-export const objectRenderInDiv = (toRender: {text: string, classes: string}) => (div className={toRender.classes}>{toRender.text}</div>);
-export const objectRenderWithElement = (toRender: {text: string, classes: string, element: object}) => (<toRender.element className={toRender.classes}>{toRender.text}</toRender.element>);
+export const objectRenderInDiv = (toRender: {text: string, classes: string}) => {
+  return (
+    <div className={toRender.classes}>
+      {toRender.text}
+    </div>
+  );
+}
+export const objectRenderWithElement = (toRender: {text: string, classes: string, element: object}) => {
+  return (
+    <toRender.element className={toRender.classes}>
+      {toRender.text}
+    </toRender.element>
+  );
+}
