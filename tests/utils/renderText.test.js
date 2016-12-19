@@ -13,7 +13,7 @@ describe("renderText", () => {
   describe('rendering a string', () => {
     it("should return a div with the string when a string is passed to it", () => {
       const result = renderText('render this');
-      expect(shallow(result).contains(<div>render this</div>)).to.equal(true);;
+      expect(shallow(result).contains(<div>render this</div>)).to.equal(true);
     });
   })
 
@@ -42,6 +42,11 @@ describe("renderText", () => {
     it("should return nothing when an object is passed without the text property to it", () => {
       const result = renderText({ wrongKey: 'render this' });
       expect(result).to.equal(undefined);
+    });
+
+    it("should return a react component with the text inside a dynamic container when element is passed", () => {
+      const result = renderText({ element: 'span', text: 'render this', classes: 'test' });
+      expect(shallow(result).contains(<span className='test'>render this</span>)).to.equal(true);
     });
   })
 
