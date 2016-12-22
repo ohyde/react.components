@@ -6,6 +6,6 @@ Reusable React Components
 
 # Todo
 - Test coverage not accurate
-- FlowJS
+- FlowJS installed
 - Accurate react component tests ( not just testing the dom rendering or props passed )
-- Dynamic div generator
+  - Unit Test RowCol
