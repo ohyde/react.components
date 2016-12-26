@@ -1,9 +1,7 @@
-/* @flow */
-
 import React from 'react';
 import R from 'ramda';
 
-export const renderText = (toRender: any) => {
+export const renderText = (toRender) => {
   return R.cond([
     [R.is(String), stringRender],
     [R.isArrayLike, arrayRender],
@@ -12,23 +10,23 @@ export const renderText = (toRender: any) => {
   ])(toRender);
 };
 
-export const stringRender = (toRender: string) => { return (<div>{toRender}</div>) };
-export const arrayRender = (toRender: Array<any>) => { return R.map(renderText, toRender); };
+export const stringRender = (toRender) => { return (<div>{toRender}</div>) };
+export const arrayRender = (toRender) => { return R.map(renderText, toRender); };
 
-export const objectRender = (toRender: {text: string, classes: string}) => {
+export const objectRender = (toRender) => {
   return R.cond([
     [R.has('element'), objectRenderWithElement],
     [R.T, objectRenderInDiv]
   ])(toRender);
 };
-export const objectRenderInDiv = (toRender: {text: string, classes: string}) => {
+export const objectRenderInDiv = (toRender) => {
   return (
     <div className={toRender.classes}>
       {toRender.text}
     </div>
   );
 }
-export const objectRenderWithElement = (toRender: {text: string, classes: string, element: object}) => {
+export const objectRenderWithElement = (toRender) => {
   return (
     <toRender.element className={toRender.classes}>
       {toRender.text}
