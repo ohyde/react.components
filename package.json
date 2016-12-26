@@ -31,6 +31,7 @@
     "coveralls": "^2.11.15",
     "enzyme": "^2.6.0",
     "flow-bin": "^0.36.0",
+    "javascript-utility-belt": "^1.0.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
