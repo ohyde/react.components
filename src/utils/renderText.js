@@ -11,7 +11,7 @@ export const renderText = (toRender) => {
 };
 
 export const stringRender = (toRender) => { return (<div>{toRender}</div>) };
-export const arrayRender = (toRender) => { return R.map(renderText, toRender); };
+export const arrayRender = R.map(renderText);
 
 export const objectRender = (toRender) => {
   return R.cond([
