@@ -1,4 +1,3 @@
-import React from 'react';
 import R from 'ramda';
 import { stringRender, arrayRender, objectRender } from './renderTypes';
 
