@@ -3,7 +3,7 @@ import R from 'ramda';
 import { renderText } from './renderText';
 
 export const stringRender = (toRender) => { return (<div>{toRender}</div>) };
-export const arrayRender = (toRender) => { return R.map(renderText, toRender); };
+export const arrayRender = (toRender) => { return (<div>{R.map(renderText, toRender)}</div>); };
 
 export const objectRender = (toRender) => {
   return R.cond([

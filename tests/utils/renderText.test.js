@@ -12,8 +12,8 @@ describe("renderText", () => {
 
   describe('rendering a string', () => {
     it("should return a div with the string when a string is passed to it", () => {
-      const result = renderText('render this');
-      expect(shallow(result).contains(<div>render this</div>)).to.equal(true);
+      const result = shallow(renderText('render this'));
+      expect(result.html()).to.equal('<div>render this</div>');
     });
   })
 
@@ -25,11 +25,11 @@ describe("renderText", () => {
         { text: 'render this third' }
       ]
 
-      const result = renderText(properties);
-
-      expect(result[0].props.children).to.equal(properties[0].text);
-      expect(result[1].props.children).to.equal(properties[1].text);
-      expect(result[2].props.children).to.equal(properties[2].text);
+      const result = shallow(renderText(properties));
+      // result.children().forEach((node) => {
+      //   console.log(node.html());
+      // });
+      expect(result.html()).to.equal('<div><div>render this first</div><div>render this second</div><div>render this third</div></div>');
     });
   })
 
