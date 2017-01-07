@@ -35,8 +35,8 @@ describe("renderText", () => {
 
   describe('rendering an object', () => {
     it("should return a div with the text string when an object is passed to it", () => {
-      const result = renderText({ text: 'render this' });
-      expect(result.props.children).to.equal('render this');
+      const result = shallow(renderText({ text: 'render this', classes: 'hello' }));
+      expect(result.html()).to.equal('<div class="hello">render this</div>');
     });
 
     it("should return nothing when an object is passed without the text property to it", () => {
@@ -45,8 +45,8 @@ describe("renderText", () => {
     });
 
     it("should return a react component with the text inside a dynamic container when element is passed", () => {
-      const result = renderText({ element: 'span', text: 'render this', classes: 'test' });
-      expect(shallow(result).contains(<span className='test'>render this</span>)).to.equal(true);
+      const result = shallow(renderText({ element: 'span', text: 'render this', classes: 'test' }));
+      expect(result.html()).to.equal('<span class="test">render this</span>');
     });
   })
 
