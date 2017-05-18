@@ -1,6 +1,12 @@
 import R from 'ramda';
 import { stringRender, arrayRender, objectRender } from './renderTypes';
 
+/*
+* Object Structure
+* {
+*   text: String
+* }
+*/
 export const renderText = R.cond([
   [R.isNil, R.always(undefined)],
   [R.is(String), stringRender],
